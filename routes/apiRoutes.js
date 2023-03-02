@@ -2,20 +2,12 @@ const path = require('path')
 const express = require('express')
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
-const { parse } = require('path');
+
 
 const api = express();
 
 api.get('/notes', (req, res) => {
-    fs.readFile('db/db.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-        }
-        else {
-            const parsedNotes = JSON.parse(data);
-            return res.json(parsedNotes)
-        }
-    })
+    res.sendFile(path.join(__dirname, '../db/db.json'))
 });
 
 
@@ -64,9 +56,9 @@ api.delete('/notes/:id', (req, res) => {
                 writeErr
                     ? console.error(writeErr)
                     : console.info('Successfully updated notes')
-                return res.json(parsedNotes)
-            })
-        }
+            return res.json(parsedNotes)})
+        
+    }
     })
 });
 // / GET /api/notes should read the db.json file and return all saved notes as JSON.
