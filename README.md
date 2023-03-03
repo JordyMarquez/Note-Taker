@@ -1,4 +1,4 @@
-# Note Taker Starter Code
+# Note Taker 
 ## Description
 This challenge required the creator to use express to create and connect endpoints to get a refactored code to display different pages. The app allows the user to create notes, save them and delete them as needed. 
 ## Usage
